@@ -1,206 +1,41 @@
-HTML
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Agrinho 2026 - Agro Forte e Sustentável</title>
-    <style>
-        :root {
-            --verde-principal: #2e7d32;
-            --verde-claro: #4caf50;
-            --terra: #8d6e63;
-            --perigo: #d32f2f;
-            --fundo: #f5f5f5;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--fundo);
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            max-width: 800px;
-        }
-
-        h1 {
-            color: var(--verde-principal);
-            margin-bottom: 5px;
-        }
-
-        .subtitulo {
-            font-style: italic;
-            color: #666;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            max-width: 900px;
-            width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        /* Área Visual do Simulador */
-        .painel-visual {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(to bottom, #e3f2fd 70%, var(--terra) 70%);
-            min-height: 300px;
-            position: relative;
-            border: 2px solid #ddd;
-        }
-
-        .planta {
-            font-size: 5rem;
-            transition: all 0.5s ease;
-            position: absolute;
-            bottom: 22%;
-        }
-
-        .status-badge {
-            position: absolute;
-            top: 10px;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            color: white;
-        }
-
-        /* Barras de Status */
-        .status-container {
-            margin-bottom: 15px;
-        }
-
-        .barra-bg {
-            background-color: #e0e0e0;
-            border-radius: 8px;
-            height: 20px;
-            width: 100%;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-
-        .barra-fill {
-            height: 100%;
-            width: 50%;
-            transition: width 0.4s ease, background-color 0.4s ease;
-        }
-
-        /* Controles */
-        .botoes-controle {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-            color: white;
-        }
-
-        .btn-quimico { background-color: var(--perigo); }
-        .btn-quimico:hover { background-color: #b71c1c; }
-
-        .btn-biologico { background-color: var(--verde-claro); }
-        .btn-biologico:hover { background-color: #388e3c; }
-
-        .btn-reiniciar { background-color: #757575; display: none; }
-
-        /* Mensagens de Feedback pedagógico */
-        .feedback-box {HTML
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador Agrinho 2026 - Agro Forte e Sustentável</title>
-    <style>
-        :root {
-            --verde-principal: #2e7d32;
-            --verde-claro: #4caf50;
-            --terra: #8d6e63;
-            --perigo: #d32f2f;
-            --fundo: #f5f5f5;
-        }HTML
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador Agrinho 2026 - Agro Forte e Sustentável</title>
-    <style>
-        :root {
-            --verde-principal: #2e7d32;
-            --verde-claro: #4caf50;
-            --terra: #8d6e63;
-            --perigo: #d32f2f;
-            --fundo: #f5f5f5;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--fundo);
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column
-            grid-column: 1 / -1;
-            background-color: #e8f5e9;
-            border-left: 5px solid var(--verde-principal);
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <h1>Simulador Eco-Agrícola</h1>
-        <p class="subtitulo">Concurso Agrinho 2026: Equilibrismo entre Produção e Meio Ambiente</p>
-        <p><strong>Desafio:</strong> Controle as pragas da lavoura sem saturar o solo com compostos químicos. Consiga fazer a planta atingir a fase adulta de forma sustentável!</p>
-    </header>
-
     <main class="container">
-        
+        <header>
+            <h1>Simulador Agrinho 2026</h1>
+            <p class="subtitulo">Equilíbrio entre produção agrícola e sustentabilidade ambiental.</p>
+            <p>Use controles sustentáveis para proteger a lavoura, cuidar do solo e vencer o desafio até o dia 15.</p>
+        </header>
+
         <section class="card painel-visual">
-            <div id="badge-estado" class="status-badge" style="background-color: var(--verde-principal);">Saudável</div>
-            <div id="planta-visual" class="planta
+            <div class="status-badge" id="badge-estado">Saudável</div>
+            <div class="planta">🌱</div>
+            <div class="info-visual">
+                <p><strong>Dia:</strong> <span id="txt-dia">1</span></p>
+                <p><strong>Saúde da planta:</strong> <span id="txt-saude">100%</span></p>
+                <p><strong>Pragas:</strong> <span id="txt-pragas">10%</span></p>
+                <p><strong>Impacto ambiental:</strong> <span id="txt-ambiente">0%</span></p>
+                <p><strong>Orçamento:</strong> <span id="txt-orcamento">$1000</span></p>
+            </div>
+        </section>
+
+        <section class="card controles">
+            <h2>Ações</h2>
+            <div class="botoes-controle">
+                <button type="button" class="btn-quimico" onclick="aplicarDefensivoQuimico()">Aplicar defensivo químico</button>
+                <button type="button" class="btn-biologico" onclick="aplicarControleBiologico()">Aplicar controle biológico</button>
+                <button type="button" class="btn-guardar" onclick="passarDia()">Passar dia</button>
+            </div>
+            <p class="notas">Objetivo: chegue no dia 15 com planta forte e impacto ambiental baixo.</p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

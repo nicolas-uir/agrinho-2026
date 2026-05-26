@@ -96,10 +96,15 @@ function atualizarInterface() {
 
     // Lógica visual básica: Muda a cor do texto dependendo da gravidade
     const txtAmbiente = document.getElementById("txt-ambiente");
+    const badge = document.getElementById("badge-estado");
     if (impactoAmbiental > 50) {
-        txtAmbiente.style.color = "red"; // Alerta de poluição
+        txtAmbiente.style.color = "red";
+        badge.innerText = "Alerta ambiental";
+        badge.style.backgroundColor = "#d32f2f";
     } else {
-        txtAmbiente.style.color = "green"; // Sustentável
+        txtAmbiente.style.color = "green";
+        badge.innerText = "Saudável";
+        badge.style.backgroundColor = "var(--verde-principal)";
     }
 }
 
