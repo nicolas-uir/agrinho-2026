@@ -1,0 +1,54 @@
+/* =================================================================
+   1. CONFIGURAÇÕES GERAIS E PALETA DE CORES
+   ================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f5; /* Verde acinzentado bem claro, confortável visualmente */
+    color: #2c3e50;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container principal que centraliza o jogo na tela */
+.container {
+    background-color: #ffffff;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Sombra suave de fundo */
+    border-top: 8px solid #2e7d32; /* Detalhe em verde escuro agrícola no topo */
+}
+
+/* =================================================================
+   2. CABEÇALHO E TÍTULOS
+   ================================================================= */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: #1b5e20;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #795548; /* Tom marrom terra para o subtítulo */
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* =================================================================
+   3. PAIN
