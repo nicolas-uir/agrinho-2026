@@ -4,7 +4,7 @@
     --verde-claro: #4caf50;
     --terra: #8d6e63;
     --perigo: #d32f2f;
-    --fundo: #eef6ed;
+    --fundo: #c8e5c0;
     --texto: #263238;
 }
 
@@ -68,6 +68,76 @@ h1 {
     overflow: hidden;
 }
 
+.spray-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.2s ease;
+}
+
+.spray-effect::before {
+    content: "";
+    position: absolute;
+    width: 12rem;
+    height: 12rem;
+    top: 8%;
+    right: 8%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 55%);
+    filter: blur(10px);
+    opacity: 0;
+}
+
+.spray-effect.active::before {
+    animation: sprayGlow 0.9s ease-out forwards;
+}
+
+.spray-effect.active {
+    opacity: 1;
+}
+
+@keyframes sprayGlow {
+    0% {
+        opacity: 0.85;
+        transform: scale(0.7);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.3);
+    }
+}
+
+.spray-effect .spray-particle {
+    position: absolute;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(167,228,255,0.8) 35%, rgba(135,206,250,0) 80%);
+    box-shadow: 0 0 14px rgba(166,233,255,0.8);
+    transform: translate(0, 0);
+    animation: sprayParticle 0.8s ease-out forwards;
+}
+
+@keyframes sprayParticle {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(0.2);
+    }
+}
+
 .status-badge {
     position: absolute;
     top: 18px;
@@ -82,6 +152,44 @@ h1 {
 
 .planta {
     font-size: 5.5rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.planta.glitter::before,
+.planta.glitter::after {
+    content: "✨";
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0;
+    color: #fffacd;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+    animation: glitterPulse 1.6s infinite ease-in-out;
+}
+
+.planta.glitter::before {
+    top: -30%;
+    left: -25%;
+    animation-delay: 0s;
+}
+
+.planta.glitter::after {
+    top: -20%;
+    right: -25%;
+    animation-delay: 0.4s;
+}
+
+@keyframes glitterPulse {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) rotate(12deg);
+    }
 }
 
 .info-visual {
@@ -139,6 +247,14 @@ button:hover {
 .notas {
     margin-top: 16px;
     color: #546e7a;
+    font-size: 0.95rem;
+}
+
+footer.autor {
+    text-align: center;
+    margin-top: 10px;
+    padding: 14px 0;
+    color: #4f6361;
     font-size: 0.95rem;
 }
 

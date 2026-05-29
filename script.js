@@ -50,11 +50,45 @@ function aplicarDefensivoQuimico() {
         nivelPragas -= 50;       // Elimina muitas pragas
         impactoAmbiental += 25;  // Alto impacto negativo no solo/água
         
+        acionarAnimacaoQuimico();
         alert("Defensivo químico aplicado! Pragas reduzidas, mas o solo sofreu impacto.");
         atualizarSimulador();
     } else {
         alert("Orçamento insuficiente para defensivos químicos!");
     }
+}
+
+function acionarAnimacaoQuimico() {
+    const spray = document.getElementById("spray-effect");
+    spray.innerHTML = "";
+
+    const particulas = 16;
+    for (let i = 0; i < particulas; i++) {
+        const particula = document.createElement("span");
+        particula.className = "spray-particle";
+
+        const startX = 78 + Math.random() * 15;
+        const startY = 14 + Math.random() * 12;
+        particula.style.left = `${startX}%`;
+        particula.style.top = `${startY}%`;
+
+        const dx = -120 - Math.random() * 80;
+        const dy = 40 + Math.random() * 80;
+        particula.style.setProperty("--dx", `${dx}px`);
+        particula.style.setProperty("--dy", `${dy}px`);
+        particula.style.width = `${6 + Math.random() * 6}px`;
+        particula.style.height = `${6 + Math.random() * 6}px`;
+        particula.style.animationDuration = `${0.7 + Math.random() * 0.5}s`;
+        particula.style.animationDelay = `${Math.random() * 0.1}s`;
+
+        spray.appendChild(particula);
+    }
+
+    spray.classList.add("active");
+    setTimeout(() => {
+        spray.classList.remove("active");
+        spray.innerHTML = "";
+    }, 1000);
 }
 
 /**
@@ -93,6 +127,28 @@ function atualizarInterface() {
     document.getElementById("txt-pragas").innerText = nivelPragas + "%";
     document.getElementById("txt-ambiente").innerText = impactoAmbiental + "%";
     document.getElementById("txt-orcamento").innerText = "$" + orcamento;
+
+    // Crescimento visual da planta ao longo dos dias
+    const planta = document.querySelector(".planta");
+    const crescimentoBase = 1 + (dia - 1) * 0.05;
+    const penalidadeSaude = saudePlanta < 50 ? 0.85 : 1;
+    const escalaPlanta = Math.min(2, crescimentoBase * penalidadeSaude);
+    planta.style.transform = `scale(${escalaPlanta.toFixed(2)})`;
+
+    // Animação de glitter quando a planta já está em desenvolvimento
+    const estaDesenvolvida = dia >= 6;
+    planta.classList.toggle("glitter", estaDesenvolvida);
+
+    // Desenvolvimento da planta: muda o emoji ao longo do tempo
+    let emojiPlanta = "🌱";
+    if (dia >= 14) {
+        emojiPlanta = "🌸";
+    } else if (dia >= 10) {
+        emojiPlanta = "🌼";
+    } else if (dia >= 6) {
+        emojiPlanta = "🌿";
+    }
+    planta.innerText = emojiPlanta;
 
     // Lógica visual básica: Muda a cor do texto dependendo da gravidade
     const txtAmbiente = document.getElementById("txt-ambiente");
